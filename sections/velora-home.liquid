@@ -1,139 +1,213 @@
-<section class="velora-home">
-  <div class="velora-hero">
-    <div class="velora-hero-copy">
-      <p class="velora-eyebrow">Velora essentials</p>
-      <h1>Feel better, every day.</h1>
-      <p class="velora-description">Modern wellness essentials for better sleep, daily recovery, and everyday comfort.</p>
-      <div class="velora-hero-actions">
-        <a href="/collections/all" class="velora-btn velora-btn-dark">Shop best sellers</a>
-        <a href="/collections/all" class="velora-btn velora-btn-light">Explore the collection</a>
-      </div>
-      <div class="velora-trust-bar">
-        <span>Thoughtfully selected products</span>
-        <span>Secure checkout</span>
-        <span>Designed for real routines</span>
+<!-- =====================
+     VELORA HOME PAGE
+     sections/velora-home.liquid
+     ===================== -->
+
+<!-- 1. HERO -->
+<section class="velora-hero">
+  <div class="velora-container">
+    <div class="velora-hero__content">
+      <p class="velora-hero__eyebrow">Modern Wellness Essentials</p>
+      <h1 class="velora-hero__title">Feel better,<br>every day.</h1>
+      <p class="velora-hero__subtitle">Premium essentials for better sleep, daily recovery,<br class="hide-mobile"> and everyday comfort.</p>
+      <div class="velora-hero__cta">
+        <a href="{{ routes.collections_url }}" class="velora-btn velora-btn--dark">Shop Best Sellers</a>
+        <a href="/collections/sleep" class="velora-btn velora-btn--ghost">Explore the Collection</a>
       </div>
     </div>
   </div>
-
-  <div class="velora-section">
-    <div class="velora-section-head">
-      <h2>Wellness that fits real life</h2>
-      <p>Discover practical products designed to support better rest, easier recovery, and more everyday comfort.</p>
-    </div>
-    <div class="velora-categories">
-      <a class="velora-card" href="/collections/sleep">
-        <h3>Sleep</h3>
-        <p>Soft essentials for calmer evenings and better rest.</p>
-      </a>
-      <a class="velora-card" href="/collections/recovery">
-        <h3>Recovery</h3>
-        <p>Comfort-focused products for slower, easier recovery.</p>
-      </a>
-      <a class="velora-card" href="/collections/daily-comfort">
-        <h3>Daily Comfort</h3>
-        <p>Thoughtful upgrades for work, home, and everyday ease.</p>
-      </a>
-    </div>
-  </div>
-
-  <div class="velora-section">
-    <div class="velora-section-head">
-      <h2>Best sellers</h2>
-      <p>Our most-loved essentials for calmer evenings, better rest, and more comfortable days.</p>
-    </div>
-    <div class="velora-products">
-      <article class="velora-product-card">
-        <div class="velora-product-visual">Satin Pillowcase Set</div>
-        <h3>Velora Satin Pillowcase Set</h3>
-        <p>A smooth, soft satin upgrade for a calmer bedtime routine.</p>
-        <span>From 39 €</span>
-      </article>
-      <article class="velora-product-card">
-        <div class="velora-product-visual">Premium Sleep Mask</div>
-        <h3>Velora Premium Sleep Mask</h3>
-        <p>Designed for darker evenings and a more relaxing rest.</p>
-        <span>From 29 €</span>
-      </article>
-      <article class="velora-product-card">
-        <div class="velora-product-visual">Heated Neck Wrap</div>
-        <h3>Velora Heated Neck Wrap</h3>
-        <p>Soft warmth and comfort for tense evenings and slower recovery moments.</p>
-        <span>From 49 €</span>
-      </article>
-    </div>
-  </div>
-
-  <div class="velora-section velora-section-alt">
-    <div class="velora-section-head">
-      <h2>Why Velora</h2>
-      <p>We believe wellness should feel simple, practical, and easy to trust.</p>
-    </div>
-    <div class="velora-benefits">
-      <div class="velora-benefit-card">
-        <h3>Curated with care</h3>
-        <p>We focus on practical products with clear everyday value.</p>
-      </div>
-      <div class="velora-benefit-card">
-        <h3>Clean, easy shopping</h3>
-        <p>A calm and intuitive experience from browsing to checkout.</p>
-      </div>
-      <div class="velora-benefit-card">
-        <h3>Designed for modern routines</h3>
-        <p>Products that fit naturally into daily life.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="velora-section">
-    <div class="velora-section-head">
-      <h2>Frequently asked questions</h2>
-    </div>
-    <div class="velora-faq-preview">
-      <div class="velora-faq-item">
-        <h3>How long does shipping take?</h3>
-        <p>Shipping times vary by destination. Estimated delivery times are shown at checkout.</p>
-      </div>
-      <div class="velora-faq-item">
-        <h3>Can I return my order?</h3>
-        <p>Returns are accepted according to our returns policy and selected conditions.</p>
-      </div>
-      <div class="velora-faq-item">
-        <h3>How can I contact support?</h3>
-        <p>You can reach us through the contact page or by email.</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="velora-section velora-cta">
-    <h2>Build better routines, one simple upgrade at a time.</h2>
-    <a href="/collections/all" class="velora-btn velora-btn-dark">Shop now</a>
-  </div>
-
-  <style>
-    .velora-home { background: #f7f5f1; color: #1f2321; }
-    .velora-hero { padding: 88px 24px 56px; background: linear-gradient(135deg, #f7f5f1 0%, #efe8dc 100%); }
-    .velora-hero-copy { max-width: 900px; margin: 0 auto; text-align: center; }
-    .velora-eyebrow { text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.8rem; color: #66706a; margin-bottom: 10px; }
-    .velora-hero h1 { font-size: clamp(2.4rem, 4vw, 3.8rem); margin: 0 0 16px; line-height: 1.05; }
-    .velora-description { font-size: 1.05rem; color: #4b544f; max-width: 700px; margin: 0 auto 24px; line-height: 1.7; }
-    .velora-hero-actions { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-bottom: 24px; }
-    .velora-btn { display: inline-block; padding: 12px 18px; border-radius: 999px; text-decoration: none; font-weight: 600; }
-    .velora-btn-dark { background: #3e4a42; color: #fff; }
-    .velora-btn-light { background: #fff; color: #3e4a42; border: 1px solid rgba(31,35,33,0.12); }
-    .velora-trust-bar { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; color: #66706a; font-size: 0.95rem; }
-    .velora-section { padding: 64px 24px; max-width: 1200px; margin: 0 auto; }
-    .velora-section-alt { background: #fff; }
-    .velora-section-head { text-align: center; max-width: 760px; margin: 0 auto 30px; }
-    .velora-section-head h2 { font-size: 2rem; margin-bottom: 8px; }
-    .velora-section-head p { color: #4b544f; line-height: 1.7; }
-    .velora-categories, .velora-products, .velora-benefits, .velora-faq-preview { display: grid; gap: 20px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .velora-card, .velora-product-card, .velora-benefit-card, .velora-faq-item { background: #fff; border-radius: 20px; padding: 24px; box-shadow: 0 10px 30px rgba(31,35,33,0.05); text-decoration: none; color: inherit; border: 1px solid rgba(31,35,33,0.06); }
-    .velora-product-visual { min-height: 170px; background: linear-gradient(135deg, #e6dece 0%, #d9e4d7 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-weight: 600; color: #3e4a42; margin-bottom: 14px; }
-    .velora-card h3, .velora-product-card h3, .velora-benefit-card h3, .velora-faq-item h3 { margin: 0 0 8px; font-size: 1.1rem; }
-    .velora-card p, .velora-product-card p, .velora-benefit-card p, .velora-faq-item p { margin: 0; color: #4b544f; line-height: 1.6; }
-    .velora-product-card span { display: inline-block; margin-top: 12px; font-weight: 600; color: #3e4a42; }
-    .velora-cta { text-align: center; padding-bottom: 80px; }
-    @media (max-width: 900px) { .velora-categories, .velora-products, .velora-benefits, .velora-faq-preview { grid-template-columns: 1fr; } }
-  </style>
 </section>
+
+<!-- 2. TRUST BAR -->
+<section class="velora-trust-bar">
+  <div class="velora-container">
+    <div class="velora-trust-bar__grid">
+      <div class="velora-trust-bar__item">
+        <span class="velora-trust-bar__icon">&#10003;</span>
+        <span>Thoughtfully selected products</span>
+      </div>
+      <div class="velora-trust-bar__item">
+        <span class="velora-trust-bar__icon">&#128274;</span>
+        <span>Secure checkout</span>
+      </div>
+      <div class="velora-trust-bar__item">
+        <span class="velora-trust-bar__icon">&#127758;</span>
+        <span>Worldwide shipping</span>
+      </div>
+      <div class="velora-trust-bar__item">
+        <span class="velora-trust-bar__icon">&#8635;</span>
+        <span>Easy returns</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. CATEGORIES -->
+<section class="velora-categories">
+  <div class="velora-container">
+    <div class="velora-section-header">
+      <h2 class="velora-section-title">Wellness that fits real life</h2>
+      <p class="velora-section-subtitle">Discover practical products designed to support better rest, easier recovery, and more everyday comfort.</p>
+    </div>
+    <div class="velora-categories__grid">
+      <a href="/collections/sleep" class="velora-category-card">
+        <span class="velora-category-card__icon">&#127769;</span>
+        <h3 class="velora-category-card__title">Sleep</h3>
+        <p class="velora-category-card__desc">Create a calmer, darker, more restful environment every night.</p>
+        <span class="velora-category-card__link">Shop Sleep &rarr;</span>
+      </a>
+      <a href="/collections/recovery" class="velora-category-card">
+        <span class="velora-category-card__icon">&#9889;</span>
+        <h3 class="velora-category-card__title">Recovery</h3>
+        <p class="velora-category-card__desc">Relieve tension, ease muscle fatigue and support daily recovery.</p>
+        <span class="velora-category-card__link">Shop Recovery &rarr;</span>
+      </a>
+      <a href="/collections/daily-comfort" class="velora-category-card">
+        <span class="velora-category-card__icon">&#9729;</span>
+        <h3 class="velora-category-card__title">Daily Comfort</h3>
+        <p class="velora-category-card__desc">Small upgrades that make your home and work routine feel better.</p>
+        <span class="velora-category-card__link">Shop Daily Comfort &rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 4. BEST SELLERS -->
+<section class="velora-products">
+  <div class="velora-container">
+    <div class="velora-section-header">
+      <h2 class="velora-section-title">Best Sellers</h2>
+      <p class="velora-section-subtitle">Our most-loved essentials for calmer evenings, better rest, and more comfortable days.</p>
+    </div>
+    <div class="velora-products__grid">
+      {%- assign featured = collections['frontpage'] | default: collections.all -%}
+      {%- for product in featured.products limit: 8 -%}
+        <div class="velora-product-card">
+          <a href="{{ product.url }}" class="velora-product-card__image-wrap">
+            {%- if product.featured_image -%}
+              <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.featured_image.alt | escape }}" width="600" height="600" loading="lazy" class="velora-product-card__image">
+            {%- else -%}
+              <div class="velora-product-card__placeholder">&#9744;</div>
+            {%- endif -%}
+          </a>
+          <div class="velora-product-card__info">
+            <p class="velora-product-card__vendor">{{ product.vendor }}</p>
+            <a href="{{ product.url }}" class="velora-product-card__title">{{ product.title }}</a>
+            <p class="velora-product-card__price">
+              {{ product.price | money }}
+              {%- if product.compare_at_price > product.price -%}
+                <span class="velora-product-card__compare">{{ product.compare_at_price | money }}</span>
+              {%- endif -%}
+            </p>
+            <a href="{{ product.url }}" class="velora-btn velora-btn--dark velora-btn--sm">View Product</a>
+          </div>
+        </div>
+      {%- else -%}
+        <p class="velora-empty-state">Add products to your store to see them here.</p>
+      {%- endfor -%}
+    </div>
+    <div class="velora-section-footer">
+      <a href="{{ routes.collections_url }}" class="velora-btn velora-btn--ghost">View All Products</a>
+    </div>
+  </div>
+</section>
+
+<!-- 5. WHY VELORA -->
+<section class="velora-why">
+  <div class="velora-container">
+    <div class="velora-section-header">
+      <h2 class="velora-section-title">Why Velora</h2>
+      <p class="velora-section-subtitle" style="max-width:620px;">We believe wellness should feel simple, practical, and easy to trust. That&rsquo;s why we focus on everyday products that support comfort, better routines, and a calmer lifestyle &mdash; without overcomplicating the experience.</p>
+    </div>
+    <div class="velora-why__grid">
+      <div class="velora-why__item">
+        <span class="velora-why__icon">&#10024;</span>
+        <h3 class="velora-why__title">Curated with care</h3>
+        <p class="velora-why__desc">We focus on practical products with clear everyday value, selected for quality and reliability.</p>
+      </div>
+      <div class="velora-why__item">
+        <span class="velora-why__icon">&#128274;</span>
+        <h3 class="velora-why__title">Clean, easy shopping</h3>
+        <p class="velora-why__desc">A calm and intuitive experience from browsing to checkout, with no friction and no surprises.</p>
+      </div>
+      <div class="velora-why__item">
+        <span class="velora-why__icon">&#9749;</span>
+        <h3 class="velora-why__title">Designed for modern routines</h3>
+        <p class="velora-why__desc">Products that fit naturally into daily life and genuinely improve the way you feel.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. REVIEWS -->
+<section class="velora-reviews">
+  <div class="velora-container">
+    <div class="velora-section-header">
+      <h2 class="velora-section-title">What our customers say</h2>
+    </div>
+    <div class="velora-reviews__grid">
+      <div class="velora-review-card">
+        <p class="velora-review-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+        <p class="velora-review-card__text">&ldquo;The sleep mask is genuinely the best I&rsquo;ve tried. Light, comfortable, and I actually wake up feeling rested.&rdquo;</p>
+        <p class="velora-review-card__author">&mdash; Sarah M., verified buyer</p>
+      </div>
+      <div class="velora-review-card">
+        <p class="velora-review-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+        <p class="velora-review-card__text">&ldquo;Fast shipping, well packaged and exactly what I expected. I&rsquo;ve already ordered a second product.&rdquo;</p>
+        <p class="velora-review-card__author">&mdash; James T., verified buyer</p>
+      </div>
+      <div class="velora-review-card">
+        <p class="velora-review-card__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+        <p class="velora-review-card__text">&ldquo;Love the simplicity of this brand. Clean design, good products, and a checkout that actually works.&rdquo;</p>
+        <p class="velora-review-card__author">&mdash; Elena R., verified buyer</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. FAQ -->
+<section class="velora-faq-preview">
+  <div class="velora-container">
+    <div class="velora-section-header">
+      <h2 class="velora-section-title">Frequently asked questions</h2>
+    </div>
+    <div class="velora-faq-preview__list">
+      <details class="velora-faq-item">
+        <summary class="velora-faq-item__q">How long does shipping take?</summary>
+        <p class="velora-faq-item__a">Most orders arrive within 7&ndash;14 business days depending on your location. Estimated delivery times are shown at checkout.</p>
+      </details>
+      <details class="velora-faq-item">
+        <summary class="velora-faq-item__q">Can I return my order?</summary>
+        <p class="velora-faq-item__a">Yes. Please review our <a href="/policies/refund-policy">Returns &amp; Refunds Policy</a> for full details before placing your order.</p>
+      </details>
+      <details class="velora-faq-item">
+        <summary class="velora-faq-item__q">How do I track my package?</summary>
+        <p class="velora-faq-item__a">Once your order ships, you&rsquo;ll receive a confirmation email with tracking information included.</p>
+      </details>
+      <details class="velora-faq-item">
+        <summary class="velora-faq-item__q">Are your products medical devices?</summary>
+        <p class="velora-faq-item__a">Unless explicitly stated on the product page, our products are not medical devices and are not intended to diagnose, treat, cure, or prevent any disease.</p>
+      </details>
+    </div>
+    <div class="velora-section-footer">
+      <a href="/pages/faq" class="velora-btn velora-btn--ghost">View all FAQs</a>
+    </div>
+  </div>
+</section>
+
+<!-- 8. CLOSING CTA -->
+<section class="velora-cta-banner">
+  <div class="velora-container">
+    <h2 class="velora-cta-banner__title">Build better routines,<br>one simple upgrade at a time.</h2>
+    <a href="{{ routes.collections_url }}" class="velora-btn velora-btn--light">Shop Now</a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Velora Home",
+  "tag": "section",
+  "class": "velora-home",
+  "settings": []
+}
+{% endschema %}
