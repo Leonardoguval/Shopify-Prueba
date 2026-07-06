@@ -1,0 +1,901 @@
+/* ============================================================
+   VELORA — Base Stylesheet
+   Brand: Wellness, made simple.
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1. CSS CUSTOM PROPERTIES (Brand Tokens)
+   ------------------------------------------------------------ */
+:root {
+  /* Colors */
+  --velora-bg:           #F7F5F1;
+  --velora-white:        #FFFFFF;
+  --velora-text:         #1F2321;
+  --velora-text-muted:   #66706A;
+  --velora-sage:         #A8B7A1;
+  --velora-sand:         #D8C7B2;
+  --velora-olive:        #3E4A42;
+  --velora-olive-hover:  #2E3830;
+  --velora-border:       #E4E0D9;
+  --velora-border-light: #F0EDE8;
+
+  /* Typography */
+  --velora-font-heading: 'Cormorant Garamond', 'Georgia', serif;
+  --velora-font-body:    'DM Sans', 'Inter', 'Helvetica Neue', sans-serif;
+
+  /* Font sizes */
+  --velora-text-xs:   0.75rem;
+  --velora-text-sm:   0.875rem;
+  --velora-text-base: 1rem;
+  --velora-text-lg:   1.125rem;
+  --velora-text-xl:   1.25rem;
+  --velora-text-2xl:  1.5rem;
+  --velora-text-3xl:  2rem;
+  --velora-text-4xl:  2.75rem;
+  --velora-text-5xl:  3.75rem;
+
+  /* Spacing */
+  --velora-space-xs:  0.5rem;
+  --velora-space-sm:  1rem;
+  --velora-space-md:  1.5rem;
+  --velora-space-lg:  2.5rem;
+  --velora-space-xl:  4rem;
+  --velora-space-2xl: 6rem;
+
+  /* Borders & Radius */
+  --velora-radius-sm:  4px;
+  --velora-radius-md:  8px;
+  --velora-radius-lg:  16px;
+  --velora-radius-full: 9999px;
+
+  /* Shadows */
+  --velora-shadow-sm: 0 1px 3px rgba(31,35,33,0.06);
+  --velora-shadow-md: 0 4px 16px rgba(31,35,33,0.08);
+  --velora-shadow-lg: 0 8px 32px rgba(31,35,33,0.10);
+
+  /* Transitions */
+  --velora-transition: 200ms ease;
+}
+
+/* ------------------------------------------------------------
+   2. RESET & BASE
+   ------------------------------------------------------------ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--velora-bg);
+  color: var(--velora-text);
+  font-family: var(--velora-font-body);
+  font-size: var(--velora-text-base);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--velora-transition);
+}
+
+a:hover {
+  color: var(--velora-olive);
+}
+
+ul, ol {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+}
+
+/* ------------------------------------------------------------
+   3. TYPOGRAPHY
+   ------------------------------------------------------------ */
+h1, h2, h3, h4, h5, h6,
+.velora-heading {
+  font-family: var(--velora-font-heading);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--velora-text);
+}
+
+h1, .velora-h1 { font-size: var(--velora-text-5xl); }
+h2, .velora-h2 { font-size: var(--velora-text-4xl); }
+h3, .velora-h3 { font-size: var(--velora-text-3xl); }
+h4, .velora-h4 { font-size: var(--velora-text-2xl); }
+h5, .velora-h5 { font-size: var(--velora-text-xl); }
+h6, .velora-h6 { font-size: var(--velora-text-lg); }
+
+p {
+  font-size: var(--velora-text-base);
+  line-height: 1.7;
+  color: var(--velora-text);
+}
+
+.velora-text-muted {
+  color: var(--velora-text-muted);
+}
+
+.velora-text-center { text-align: center; }
+.velora-text-left   { text-align: left; }
+.velora-text-right  { text-align: right; }
+
+/* Responsive typography */
+@media (max-width: 768px) {
+  h1, .velora-h1 { font-size: var(--velora-text-4xl); }
+  h2, .velora-h2 { font-size: var(--velora-text-3xl); }
+  h3, .velora-h3 { font-size: var(--velora-text-2xl); }
+}
+
+@media (max-width: 480px) {
+  h1, .velora-h1 { font-size: var(--velora-text-3xl); }
+  h2, .velora-h2 { font-size: var(--velora-text-2xl); }
+}
+
+/* ------------------------------------------------------------
+   4. LAYOUT
+   ------------------------------------------------------------ */
+.velora-container {
+  width: 100%;
+  max-width: 1240px;
+  margin-inline: auto;
+  padding-inline: var(--velora-space-lg);
+}
+
+.velora-container--narrow {
+  max-width: 860px;
+}
+
+.velora-container--wide {
+  max-width: 1440px;
+}
+
+.velora-section {
+  padding-block: var(--velora-space-2xl);
+}
+
+.velora-section--sm {
+  padding-block: var(--velora-space-xl);
+}
+
+.velora-grid {
+  display: grid;
+  gap: var(--velora-space-md);
+}
+
+.velora-grid--2 { grid-template-columns: repeat(2, 1fr); }
+.velora-grid--3 { grid-template-columns: repeat(3, 1fr); }
+.velora-grid--4 { grid-template-columns: repeat(4, 1fr); }
+
+@media (max-width: 900px) {
+  .velora-grid--4 { grid-template-columns: repeat(2, 1fr); }
+  .velora-grid--3 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .velora-grid--4,
+  .velora-grid--3,
+  .velora-grid--2 { grid-template-columns: 1fr; }
+
+  .velora-container {
+    padding-inline: var(--velora-space-sm);
+  }
+}
+
+.velora-flex {
+  display: flex;
+  align-items: center;
+}
+
+.velora-flex--center {
+  justify-content: center;
+}
+
+.velora-flex--between {
+  justify-content: space-between;
+}
+
+.velora-flex--gap {
+  gap: var(--velora-space-sm);
+}
+
+/* ------------------------------------------------------------
+   5. BUTTONS
+   ------------------------------------------------------------ */
+.velora-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  font-family: var(--velora-font-body);
+  font-size: var(--velora-text-sm);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-radius: var(--velora-radius-sm);
+  transition: all var(--velora-transition);
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  white-space: nowrap;
+}
+
+/* Primary button */
+.velora-btn--primary {
+  background-color: var(--velora-olive);
+  color: var(--velora-white);
+  border-color: var(--velora-olive);
+}
+
+.velora-btn--primary:hover {
+  background-color: var(--velora-olive-hover);
+  border-color: var(--velora-olive-hover);
+  color: var(--velora-white);
+}
+
+/* Secondary / outlined button */
+.velora-btn--secondary {
+  background-color: transparent;
+  color: var(--velora-olive);
+  border-color: var(--velora-olive);
+}
+
+.velora-btn--secondary:hover {
+  background-color: var(--velora-olive);
+  color: var(--velora-white);
+}
+
+/* Ghost button */
+.velora-btn--ghost {
+  background-color: transparent;
+  color: var(--velora-text);
+  border-color: var(--velora-border);
+}
+
+.velora-btn--ghost:hover {
+  border-color: var(--velora-olive);
+  color: var(--velora-olive);
+}
+
+/* Light button (on dark backgrounds) */
+.velora-btn--light {
+  background-color: var(--velora-white);
+  color: var(--velora-olive);
+  border-color: var(--velora-white);
+}
+
+.velora-btn--light:hover {
+  background-color: var(--velora-bg);
+  border-color: var(--velora-bg);
+}
+
+/* Size variants */
+.velora-btn--sm {
+  padding: 0.625rem 1.25rem;
+  font-size: var(--velora-text-xs);
+}
+
+.velora-btn--lg {
+  padding: 1.1rem 2.5rem;
+  font-size: var(--velora-text-base);
+}
+
+/* Full width */
+.velora-btn--full {
+  width: 100%;
+}
+
+/* ------------------------------------------------------------
+   6. HEADER & NAVIGATION
+   ------------------------------------------------------------ */
+.velora-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--velora-white);
+  border-bottom: 1px solid var(--velora-border-light);
+  padding-block: var(--velora-space-sm);
+  transition: box-shadow var(--velora-transition);
+}
+
+.velora-header.scrolled {
+  box-shadow: var(--velora-shadow-sm);
+}
+
+.velora-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--velora-space-lg);
+}
+
+/* Logo */
+.velora-logo {
+  font-family: var(--velora-font-heading);
+  font-size: var(--velora-text-2xl);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--velora-text);
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.velora-logo:hover {
+  color: var(--velora-olive);
+}
+
+/* Nav */
+.velora-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--velora-space-lg);
+}
+
+.velora-nav__link {
+  font-size: var(--velora-text-sm);
+  font-weight: 450;
+  letter-spacing: 0.03em;
+  color: var(--velora-text-muted);
+  text-transform: uppercase;
+  transition: color var(--velora-transition);
+  position: relative;
+  padding-block: 0.25rem;
+}
+
+.velora-nav__link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--velora-olive);
+  transition: width var(--velora-transition);
+}
+
+.velora-nav__link:hover,
+.velora-nav__link.active {
+  color: var(--velora-olive);
+}
+
+.velora-nav__link:hover::after,
+.velora-nav__link.active::after {
+  width: 100%;
+}
+
+/* Header actions */
+.velora-header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--velora-space-sm);
+}
+
+/* Mobile menu toggle */
+.velora-menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.velora-menu-toggle span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background-color: var(--velora-text);
+  transition: all var(--velora-transition);
+}
+
+@media (max-width: 900px) {
+  .velora-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--velora-white);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: var(--velora-space-md) var(--velora-space-lg);
+    border-top: 1px solid var(--velora-border-light);
+    gap: var(--velora-space-sm);
+  }
+
+  .velora-nav.open {
+    display: flex;
+  }
+
+  .velora-menu-toggle {
+    display: flex;
+  }
+}
+
+/* ------------------------------------------------------------
+   7. HERO SECTION
+   ------------------------------------------------------------ */
+.velora-hero {
+  background-color: var(--velora-bg);
+  padding-block: var(--velora-space-2xl);
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+}
+
+.velora-hero--dark {
+  background-color: var(--velora-olive);
+  color: var(--velora-white);
+}
+
+.velora-hero--dark h1,
+.velora-hero--dark h2,
+.velora-hero--dark p {
+  color: var(--velora-white);
+}
+
+.velora-hero__content {
+  max-width: 680px;
+}
+
+.velora-hero__eyebrow {
+  display: inline-block;
+  font-size: var(--velora-text-xs);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--velora-text-muted);
+  margin-bottom: var(--velora-space-sm);
+}
+
+.velora-hero__title {
+  font-size: var(--velora-text-5xl);
+  font-family: var(--velora-font-heading);
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: var(--velora-space-md);
+}
+
+.velora-hero__subtitle {
+  font-size: var(--velora-text-lg);
+  color: var(--velora-text-muted);
+  line-height: 1.6;
+  margin-bottom: var(--velora-space-lg);
+  max-width: 520px;
+}
+
+.velora-hero__actions {
+  display: flex;
+  gap: var(--velora-space-sm);
+  flex-wrap: wrap;
+}
+
+/* ------------------------------------------------------------
+   8. TRUST BAR
+   ------------------------------------------------------------ */
+.velora-trust-bar {
+  background-color: var(--velora-olive);
+  padding-block: var(--velora-space-sm);
+}
+
+.velora-trust-bar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--velora-space-xl);
+  flex-wrap: wrap;
+}
+
+.velora-trust-bar__item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--velora-text-sm);
+  font-weight: 450;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--velora-white);
+  opacity: 0.9;
+}
+
+@media (max-width: 600px) {
+  .velora-trust-bar__inner {
+    gap: var(--velora-space-md);
+    flex-direction: column;
+  }
+}
+
+/* ------------------------------------------------------------
+   9. CATEGORY CARDS
+   ------------------------------------------------------------ */
+.velora-category-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--velora-radius-md);
+  background-color: var(--velora-sand);
+  aspect-ratio: 3 / 4;
+  cursor: pointer;
+  transition: transform var(--velora-transition);
+}
+
+.velora-category-card:hover {
+  transform: translateY(-4px);
+}
+
+.velora-category-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 400ms ease;
+}
+
+.velora-category-card:hover .velora-category-card__image {
+  transform: scale(1.04);
+}
+
+.velora-category-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(31,35,33,0.55) 0%, transparent 50%);
+}
+
+.velora-category-card__content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--velora-space-md);
+  color: var(--velora-white);
+}
+
+.velora-category-card__title {
+  font-family: var(--velora-font-heading);
+  font-size: var(--velora-text-2xl);
+  font-weight: 400;
+  margin-bottom: 0.25rem;
+  color: var(--velora-white);
+}
+
+.velora-category-card__link {
+  font-size: var(--velora-text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.8);
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.velora-category-card__link::after {
+  content: '→';
+}
+
+/* ------------------------------------------------------------
+   10. PRODUCT CARDS
+   ------------------------------------------------------------ */
+.velora-product-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.velora-product-card__image-wrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--velora-radius-md);
+  background-color: var(--velora-border-light);
+  aspect-ratio: 1 / 1;
+  margin-bottom: var(--velora-space-sm);
+}
+
+.velora-product-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 400ms ease;
+}
+
+.velora-product-card:hover .velora-product-card__image {
+  transform: scale(1.04);
+}
+
+.velora-product-card__badge {
+  position: absolute;
+  top: var(--velora-space-xs);
+  left: var(--velora-space-xs);
+  background-color: var(--velora-olive);
+  color: var(--velora-white);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--velora-radius-sm);
+}
+
+.velora-product-card__category {
+  font-size: var(--velora-text-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--velora-text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.velora-product-card__title {
+  font-family: var(--velora-font-heading);
+  font-size: var(--velora-text-xl);
+  font-weight: 400;
+  margin-bottom: 0.375rem;
+  line-height: 1.3;
+}
+
+.velora-product-card__tagline {
+  font-size: var(--velora-text-sm);
+  color: var(--velora-text-muted);
+  margin-bottom: var(--velora-space-xs);
+  flex-grow: 1;
+}
+
+.velora-product-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: var(--velora-space-xs);
+}
+
+.velora-product-card__price {
+  font-size: var(--velora-text-lg);
+  font-weight: 500;
+  color: var(--velora-text);
+}
+
+/* ------------------------------------------------------------
+   11. SECTION HEADINGS
+   ------------------------------------------------------------ */
+.velora-section-header {
+  margin-bottom: var(--velora-space-xl);
+}
+
+.velora-section-header--center {
+  text-align: center;
+}
+
+.velora-section-header__eyebrow {
+  display: inline-block;
+  font-size: var(--velora-text-xs);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--velora-text-muted);
+  margin-bottom: var(--velora-space-xs);
+}
+
+.velora-section-header__title {
+  font-family: var(--velora-font-heading);
+  font-size: var(--velora-text-4xl);
+  font-weight: 400;
+  margin-bottom: var(--velora-space-xs);
+}
+
+.velora-section-header__subtitle {
+  font-size: var(--velora-text-lg);
+  color: var(--velora-text-muted);
+  max-width: 560px;
+}
+
+.velora-section-header--center .velora-section-header__subtitle {
+  margin-inline: auto;
+}
+
+/* ------------------------------------------------------------
+   12. FEATURE / WHY VELORA BLOCKS
+   ------------------------------------------------------------ */
+.velora-feature-block {
+  padding: var(--velora-space-lg);
+  background-color: var(--velora-white);
+  border-radius: var(--velora-radius-md);
+  border: 1px solid var(--velora-border-light);
+}
+
+.velora-feature-block__icon {
+  width: 44px;
+  height: 44px;
+  background-color: var(--velora-border-light);
+  border-radius: var(--velora-radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--velora-space-sm);
+  font-size: 1.25rem;
+}
+
+.velora-feature-block__title {
+  font-family: var(--velora-font-heading);
+  font-size: var(--velora-text-xl);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.velora-feature-block__text {
+  font-size: var(--velora-text-sm);
+  color: var(--velora-text-muted);
+  line-height: 1.65;
+}
+
+/* ------------------------------------------------------------
+   13. FOOTER
+   ------------------------------------------------------------ */
+.velora-footer {
+  background-color: var(--velora-text);
+  color: rgba(255,255,255,0.75);
+  padding-block: var(--velora-space-2xl) var(--velora-space-lg);
+}
+
+.velora-footer__grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: var(--velora-space-xl);
+  margin-bottom: var(--velora-space-xl);
+}
+
+.velora-footer__brand .velora-logo {
+  color: var(--velora-white);
+  display: block;
+  margin-bottom: var(--velora-space-sm);
+}
+
+.velora-footer__tagline {
+  font-size: var(--velora-text-sm);
+  line-height: 1.65;
+  color: rgba(255,255,255,0.55);
+}
+
+.velora-footer__col-title {
+  font-size: var(--velora-text-xs);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--velora-white);
+  margin-bottom: var(--velora-space-sm);
+}
+
+.velora-footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.velora-footer__links a {
+  font-size: var(--velora-text-sm);
+  color: rgba(255,255,255,0.55);
+  transition: color var(--velora-transition);
+}
+
+.velora-footer__links a:hover {
+  color: var(--velora-white);
+}
+
+.velora-footer__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--velora-space-md);
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: var(--velora-text-xs);
+  color: rgba(255,255,255,0.35);
+  flex-wrap: wrap;
+  gap: var(--velora-space-sm);
+}
+
+@media (max-width: 900px) {
+  .velora-footer__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--velora-space-lg);
+  }
+}
+
+@media (max-width: 600px) {
+  .velora-footer__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .velora-footer__bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* ------------------------------------------------------------
+   14. UTILITY CLASSES
+   ------------------------------------------------------------ */
+.velora-divider {
+  width: 40px;
+  height: 1px;
+  background-color: var(--velora-sage);
+  margin-block: var(--velora-space-sm);
+}
+
+.velora-divider--center {
+  margin-inline: auto;
+}
+
+.velora-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--velora-radius-full);
+}
+
+.velora-badge--sage {
+  background-color: rgba(168,183,161,0.2);
+  color: var(--velora-olive);
+}
+
+.velora-badge--sand {
+  background-color: rgba(216,199,178,0.3);
+  color: var(--velora-text);
+}
+
+.velora-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.velora-mt-sm { margin-top: var(--velora-space-sm); }
+.velora-mt-md { margin-top: var(--velora-space-md); }
+.velora-mt-lg { margin-top: var(--velora-space-lg); }
+.velora-mb-sm { margin-bottom: var(--velora-space-sm); }
+.velora-mb-md { margin-bottom: var(--velora-space-md); }
+.velora-mb-lg { margin-bottom: var(--velora-space-lg); }
+
+/* ------------------------------------------------------------
+   15. ANIMATIONS
+   ------------------------------------------------------------ */
+@keyframes velora-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.velora-animate-fade-up {
+  animation: velora-fade-up 600ms ease both;
+}
+
+.velora-animate-delay-1 { animation-delay: 100ms; }
+.velora-animate-delay-2 { animation-delay: 200ms; }
+.velora-animate-delay-3 { animation-delay: 300ms; }
