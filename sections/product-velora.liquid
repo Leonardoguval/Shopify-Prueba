@@ -1,0 +1,300 @@
+<section class="velora-product-page" id="shopify-section-{{ section.id }}">
+  <div class="velora-product-grid">
+    <div class="velora-product-media">
+      {% if product.featured_media %}
+        <img
+          src="{{ product.featured_media | image_url: width: 1400 }}"
+          alt="{{ product.featured_media.alt | escape }}"
+          class="velora-product-main-image"
+        >
+      {% else %}
+        <div class="velora-product-placeholder">No image available</div>
+      {% endif %}
+
+      {% if product.media.size > 1 %}
+        <div class="velora-product-thumbnails">
+          {% for media in product.media limit: 4 %}
+            {% if media.preview_image %}
+              <img
+                src="{{ media.preview_image | image_url: width: 220 }}"
+                alt="{{ media.alt | escape }}"
+                class="velora-product-thumb"
+              >
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="velora-product-info">
+      <p class="velora-eyebrow">{{ section.settings.eyebrow | default: 'Velora essentials' }}</p>
+      <h1>{{ product.title }}</h1>
+
+      {% assign short_description = product.metafields.custom.short_description | default: product.description %}
+      <p class="velora-short-description">{{ short_description | strip_html | truncate: 220 }}</p>
+
+      <div class="velora-price-row">
+        <span class="velora-price">{{ product.price | money }}</span>
+        {% if product.compare_at_price > product.price %}
+          <span class="velora-compare-price">{{ product.compare_at_price | money }}</span>
+        {% endif %}
+      </div>
+
+      <form action="/cart/add" method="post" enctype="multipart/form-data" class="velora-product-form">
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+        {% unless product.has_only_default_variant %}
+          {% for option in product.options_with_values %}
+            <div class="velora-option-group">
+              <label for="Option{{ section.id }}-{{ forloop.index0 }}">{{ option.name }}</label>
+              <select id="Option{{ section.id }}-{{ forloop.index0 }}" name="options[{{ option.name | escape }}]">
+                {% for value in option.values %}
+                  <option value="{{ value | escape }}"{% if option.selected_value == value %} selected="selected"{% endif %}>{{ value }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          {% endfor %}
+        {% endunless %}
+
+        <button type="submit" class="velora-add-to-cart">Add to cart</button>
+      </form>
+
+      <div class="velora-usp-list">
+        <div class="velora-usp-item">Secure checkout</div>
+        <div class="velora-usp-item">Free shipping over a threshold</div>
+        <div class="velora-usp-item">Easy returns</div>
+      </div>
+
+      <div class="velora-info-blocks">
+        <div class="velora-info-card">
+          <h2>{{ section.settings.benefits_heading }}</h2>
+          {% assign benefits = product.metafields.custom.benefits | default: '' | split: '|' %}
+          {% unless benefits[0] == blank %}
+            <ul>
+              {% for benefit in benefits %}
+                {% if benefit != blank %}
+                  <li>{{ benefit }}</li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          {% else %}
+            <ul>
+              <li>Designed for comfort and daily use</li>
+              <li>Simple, premium feel</li>
+              <li>Easy to incorporate into your routine</li>
+            </ul>
+          {% endunless %}
+        </div>
+
+        <div class="velora-info-card">
+          <h2>{{ section.settings.how_to_use_heading }}</h2>
+          {% assign how_to_use = product.metafields.custom.how_to_use | default: 'Use this product as part of your everyday routine for a calm, comfortable experience.' %}
+          <p>{{ how_to_use }}</p>
+        </div>
+
+        <div class="velora-info-card">
+          <h2>{{ section.settings.who_is_it_for_heading }}</h2>
+          {% assign audience = product.metafields.custom.who_is_it_for | default: 'Ideal for anyone looking for simple comfort, better routines, and thoughtful everyday essentials.' %}
+          <p>{{ audience }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .velora-product-page {
+      padding: 48px 0;
+      background: #f7f5f1;
+      color: #1f2321;
+    }
+
+    .velora-product-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 40px;
+      align-items: start;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .velora-product-main-image {
+      width: 100%;
+      border-radius: 24px;
+      object-fit: cover;
+      display: block;
+      background: #fff;
+      box-shadow: 0 12px 36px rgba(31, 35, 33, 0.08);
+    }
+
+    .velora-product-thumbnails {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .velora-product-thumb {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid rgba(31, 35, 33, 0.12);
+    }
+
+    .velora-product-info h1 {
+      font-size: 2.2rem;
+      margin: 8px 0 12px;
+      line-height: 1.15;
+    }
+
+    .velora-eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.8rem;
+      color: #66706a;
+      margin: 0;
+    }
+
+    .velora-short-description {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #4b544f;
+      margin-bottom: 18px;
+    }
+
+    .velora-price-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .velora-price {
+      font-size: 1.35rem;
+      font-weight: 700;
+    }
+
+    .velora-compare-price {
+      color: #66706a;
+      text-decoration: line-through;
+    }
+
+    .velora-product-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .velora-option-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .velora-option-group select {
+      padding: 12px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(31, 35, 33, 0.18);
+      background: #fff;
+      font-size: 0.95rem;
+    }
+
+    .velora-add-to-cart {
+      padding: 14px 18px;
+      background: #3e4a42;
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: transform 0.2s ease;
+    }
+
+    .velora-add-to-cart:hover {
+      transform: translateY(-1px);
+    }
+
+    .velora-usp-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .velora-usp-item {
+      border: 1px solid rgba(31, 35, 33, 0.12);
+      background: #fff;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      color: #3e4a42;
+    }
+
+    .velora-info-blocks {
+      display: grid;
+      gap: 14px;
+    }
+
+    .velora-info-card {
+      background: #fff;
+      padding: 18px 20px;
+      border-radius: 18px;
+      border: 1px solid rgba(31, 35, 33, 0.08);
+    }
+
+    .velora-info-card h2 {
+      font-size: 1rem;
+      margin: 0 0 10px;
+    }
+
+    .velora-info-card p,
+    .velora-info-card li {
+      color: #4b544f;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 900px) {
+      .velora-product-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</section>
+{% schema %}
+{
+  "name": "Velora product page",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Velora essentials"
+    },
+    {
+      "type": "text",
+      "id": "benefits_heading",
+      "label": "Benefits heading",
+      "default": "Why you'll love it"
+    },
+    {
+      "type": "text",
+      "id": "how_to_use_heading",
+      "label": "How to use heading",
+      "default": "How to use"
+    },
+    {
+      "type": "text",
+      "id": "who_is_it_for_heading",
+      "label": "Who it's for heading",
+      "default": "Who it's for"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Velora product page"
+    }
+  ]
+}
+{% endschema %}
