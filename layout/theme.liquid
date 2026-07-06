@@ -1,16 +1,179 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="{{ request.locale.iso_code }}">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>{{ page_title }}</title>
+
+    <!-- SEO -->
+    <title>{{ page_title }}{% unless page_title contains shop.name %} &mdash; {{ shop.name }}{% endunless %}</title>
     <meta name="description" content="{{ page_description | escape }}">
+    <link rel="canonical" href="{{ canonical_url }}">
+
+    <!-- Preconnect for fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Velora Fonts: Cormorant Garamond + DM Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;450;500&display=swap" rel="stylesheet">
+
+    <!-- Velora Base Styles -->
+    {{ 'velora-base.css' | asset_url | stylesheet_tag }}
+
     {{ content_for_header }}
   </head>
+
   <body>
-    <main>
+
+    <!-- =====================
+         HEADER / NAVIGATION
+         ===================== -->
+    <header class="velora-header" id="velora-header">
+      <div class="velora-container">
+        <div class="velora-header__inner">
+
+          <!-- Logo -->
+          <a href="{{ routes.root_url }}" class="velora-logo" aria-label="{{ shop.name }} home">
+            VELORA
+          </a>
+
+          <!-- Main Navigation -->
+          <nav class="velora-nav" id="velora-nav" aria-label="Main navigation">
+            <a href="{{ routes.root_url }}" class="velora-nav__link">Home</a>
+            <a href="{{ routes.collections_url }}" class="velora-nav__link">Shop</a>
+            <a href="/collections/sleep" class="velora-nav__link">Sleep</a>
+            <a href="/collections/recovery" class="velora-nav__link">Recovery</a>
+            <a href="/collections/daily-comfort" class="velora-nav__link">Daily Comfort</a>
+            <a href="/pages/about" class="velora-nav__link">About</a>
+            <a href="/pages/faq" class="velora-nav__link">FAQ</a>
+            <a href="/pages/contact" class="velora-nav__link">Contact</a>
+          </nav>
+
+          <!-- Header Actions -->
+          <div class="velora-header__actions">
+            <!-- Search (optional) -->
+            <a href="{{ routes.search_url }}" aria-label="Search" class="velora-nav__link" style="font-size:1.1rem;">&#128269;</a>
+
+            <!-- Cart -->
+            <a href="{{ routes.cart_url }}" aria-label="Cart" class="velora-btn velora-btn--ghost velora-btn--sm">
+              Cart
+              {%- if cart.item_count > 0 -%}
+                <span style="background:var(--velora-olive);color:#fff;border-radius:50%;width:18px;height:18px;font-size:0.65rem;display:inline-flex;align-items:center;justify-content:center;">{{ cart.item_count }}</span>
+              {%- endif -%}
+            </a>
+          </div>
+
+          <!-- Mobile menu toggle -->
+          <button
+            class="velora-menu-toggle"
+            aria-label="Toggle menu"
+            aria-expanded="false"
+            aria-controls="velora-nav"
+            id="velora-menu-btn"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+        </div>
+      </div>
+    </header>
+
+    <!-- =====================
+         MAIN CONTENT
+         ===================== -->
+    <main id="main-content" tabindex="-1">
       {{ content_for_layout }}
     </main>
+
+    <!-- =====================
+         FOOTER
+         ===================== -->
+    <footer class="velora-footer">
+      <div class="velora-container">
+        <div class="velora-footer__grid">
+
+          <!-- Brand column -->
+          <div class="velora-footer__brand">
+            <a href="{{ routes.root_url }}" class="velora-logo">VELORA</a>
+            <p class="velora-footer__tagline">
+              Wellness, made simple. Practical essentials for better sleep, recovery, and everyday comfort.
+            </p>
+          </div>
+
+          <!-- Shop column -->
+          <div>
+            <p class="velora-footer__col-title">Shop</p>
+            <ul class="velora-footer__links">
+              <li><a href="{{ routes.collections_url }}">All Products</a></li>
+              <li><a href="/collections/sleep">Sleep</a></li>
+              <li><a href="/collections/recovery">Recovery</a></li>
+              <li><a href="/collections/daily-comfort">Daily Comfort</a></li>
+            </ul>
+          </div>
+
+          <!-- Help column -->
+          <div>
+            <p class="velora-footer__col-title">Help</p>
+            <ul class="velora-footer__links">
+              <li><a href="/pages/faq">FAQ</a></li>
+              <li><a href="/pages/contact">Contact</a></li>
+              <li><a href="/pages/shipping-policy">Shipping</a></li>
+              <li><a href="/pages/returns">Returns</a></li>
+              <li><a href="https://track.aftership.com" target="_blank" rel="noopener">Track Order</a></li>
+            </ul>
+          </div>
+
+          <!-- Legal column -->
+          <div>
+            <p class="velora-footer__col-title">Legal</p>
+            <ul class="velora-footer__links">
+              <li><a href="/pages/about">About</a></li>
+              <li><a href="/policies/privacy-policy">Privacy Policy</a></li>
+              <li><a href="/policies/terms-of-service">Terms of Service</a></li>
+              <li><a href="/policies/refund-policy">Refund Policy</a></li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- Footer bottom -->
+        <div class="velora-footer__bottom">
+          <span>&copy; {{ 'now' | date: "%Y" }} Velora. All rights reserved.</span>
+          <span>Secure checkout &middot; Worldwide shipping</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- =====================
+         MOBILE MENU SCRIPT
+         ===================== -->
+    <script>
+      (function () {
+        var btn = document.getElementById('velora-menu-btn');
+        var nav = document.getElementById('velora-nav');
+        var header = document.getElementById('velora-header');
+
+        if (btn && nav) {
+          btn.addEventListener('click', function () {
+            var isOpen = nav.classList.toggle('open');
+            btn.setAttribute('aria-expanded', isOpen);
+          });
+        }
+
+        // Sticky header shadow on scroll
+        if (header) {
+          window.addEventListener('scroll', function () {
+            if (window.scrollY > 10) {
+              header.classList.add('scrolled');
+            } else {
+              header.classList.remove('scrolled');
+            }
+          }, { passive: true });
+        }
+      })();
+    </script>
+
   </body>
 </html>
