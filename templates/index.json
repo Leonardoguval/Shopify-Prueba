@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "velora-home": {
+      "type": "velora-home",
+      "settings": {}
+    }
+  },
+  "order": [
+    "velora-home"
+  ]
+}
