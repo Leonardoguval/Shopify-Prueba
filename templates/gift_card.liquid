@@ -1,5 +1,316 @@
-<script
-  src="{{ 'theme-editor.js' | asset_url }}"
-  type="module"
-  defer="defer"
-></script>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Titan Pro Smartwatch - Rendimiento Sin Límites</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    /* VARIABLES Y ESTILOS GLOBALES */
+    :root {
+      --primary: #0066FF;
+      --primary-hover: #0052CC;
+      --bg-dark: #0A0C10;
+      --bg-card: #161B22;
+      --text-main: #F0F6FC;
+      --text-muted: #8B949E;
+      --accent: #00E676;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    /* BARRA DE ANUNCIO */
+    .announcement-bar {
+      background: linear-gradient(90deg, #0066FF, #8E24AA);
+      text-align: center;
+      padding: 10px 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    /* ENCABEZADO */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 5%;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      color: var(--primary);
+    }
+
+    /* SECCIÓN PRINCIPAL (HERO) */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+      padding: 60px 5%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+      }
+    }
+
+    .product-gallery {
+      text-align: center;
+    }
+
+    .product-image {
+      width: 100%;
+      max-width: 450px;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 102, 255, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .product-image:hover {
+      transform: scale(1.02);
+    }
+
+    /* DETALLES DE PRODUCTO */
+    .product-details .badge {
+      background-color: rgba(0, 230, 118, 0.15);
+      color: var(--accent);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+
+    .product-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 15px;
+    }
+
+    .price-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .current-price {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    .old-price {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+
+    .discount {
+      background-color: #FF3D00;
+      color: white;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .description {
+      color: var(--text-muted);
+      margin-bottom: 25px;
+    }
+
+    /* OPCIONES DE COMPRA */
+    .selector-label {
+      font-weight: 600;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .color-options {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+
+    .color-btn {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .color-btn.active {
+      border-color: white;
+      transform: scale(1.1);
+    }
+
+    .btn-buy {
+      width: 100%;
+      background-color: var(--primary);
+      color: white;
+      padding: 18px;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.2s, transform 0.1s;
+      box-shadow: 0 10px 20px rgba(0, 102, 255, 0.3);
+    }
+
+    .btn-buy:hover {
+      background-color: var(--primary-hover);
+    }
+
+    .btn-buy:active {
+      transform: scale(0.99);
+    }
+
+    /* GARANTÍAS Y CARACTERÍSTICAS */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 60px 5%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      background-color: var(--bg-card);
+      padding: 25px;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .feature-icon {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+    }
+
+    .feature-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .feature-desc {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* PIE DE PÁGINA */
+    footer {
+      text-align: center;
+      padding: 40px 5%;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="announcement-bar">
+    ⚡ Oferta Exclusiva: 50% DTO. + Envío Exprés Gratis hoy
+  </div>
+
+  <header>
+    <div class="logo">TITAN<span>PRO</span></div>
+  </header>
+
+  <main class="hero">
+    <div class="product-gallery">
+      <img id="main-product-img" class="product-image" src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80" alt="Titan Pro Smartwatch">
+    </div>
+
+    <div class="product-details">
+      <span class="badge">✓ En Stock - Envío en 24h</span>
+      <h1 class="product-title">Titan Pro Smartwatch V2</h1>
+      
+      <div class="price-container">
+        <span class="current-price">79,99 €</span>
+        <span class="old-price">159,99 €</span>
+        <span class="discount">-50%</span>
+      </div>
+
+      <p class="description">
+        Diseñado para llevar tus entrenamientos y tu salud al siguiente nivel. Pantalla AMOLED ultra brillante, resistencia al agua hasta 50 metros y batería con duración de 14 días.
+      </p>
+
+      <span class="selector-label">Selecciona el color:</span>
+      <div class="color-options">
+        <button class="color-btn active" style="background-color: #1a1a1a;" onclick="selectColor(this)"></button>
+        <button class="color-btn" style="background-color: #e0e0e0;" onclick="selectColor(this)"></button>
+        <button class="color-btn" style="background-color: #0066FF;" onclick="selectColor(this)"></button>
+      </div>
+
+      <button class="btn-buy" onclick="addToCart()">AÑADIR AL CARRITO</button>
+    </div>
+  </main>
+
+  <section class="features">
+    <div class="feature-card">
+      <div class="feature-icon">🔋</div>
+      <h3 class="feature-title">Batería de 14 Días</h3>
+      <p class="feature-desc">Olvídate de cargarlo a diario gracias a la tecnología de optimización energética de última generación.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🌊</div>
+      <h3 class="feature-title">Sumergible 5 ATM</h3>
+      <p class="feature-desc">Diseñado para nadar y soportar cualquier condición meteorológica extrema sin comprometer el circuito.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">❤️</div>
+      <h3 class="feature-title">Monitoreo Médico 24/7</h3>
+      <p class="feature-desc">Medición continua de ritmo cardíaco, oxígeno en sangre (SpO2) y análisis profundo de las fases del sueño.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Titan Pro Technologies. Todos los derechos reservados.</p>
+    <p>Pago seguro garantizado con cifrado SSL de 256 bits.</p>
+  </footer>
+
+  <script>
+    function selectColor(element) {
+      // Remover clase 'active' de todos los botones
+      document.querySelectorAll('.color-btn').forEach(btn => btn.classList.remove('active'));
+      // Añadir al seleccionado
+      element.classList.add('active');
+    }
+
+    function addToCart() {
+      alert('¡Producto añadido al carrito correctamente!');
+    }
+  </script>
+</body>
+</html>
